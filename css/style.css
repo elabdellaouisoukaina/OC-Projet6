@@ -39,7 +39,11 @@ h1 {
     flex-direction: column;
 }
 
-.photographer_section article h2 {
+.photographer_section article a {
+    text-decoration : none;
+}
+
+.photographer_section article a h2 {
     color: #D3573C;
     font-family: DM Sans;
     font-size: 36px;
@@ -48,6 +52,7 @@ h1 {
     letter-spacing: 0em;
     text-align: center;
     margin: 20px 0 0 0;
+    text-decoration : none;
 }
 
 .photographer_section article a img {

@@ -6,16 +6,19 @@ function photographerFactory(data) {
         const article = document.createElement( 'article' );
 
         const linkToDetails = document.createElement('a');
-        linkToDetails.title = "Lien vers la page de " + name;
+        linkToDetails.title = name;
         linkToDetails.href = "http://127.0.0.1:5500/photographer.html?id=" + id;
 
         const img = document.createElement( 'img' );
-        img.setAttribute("src", picture)
-
-        linkToDetails.appendChild(img);     
+        img.setAttribute("src", picture);
+        img.alt = "";
 
         const nameElement = document.createElement( 'h2' );
         nameElement.textContent = name;
+
+        linkToDetails.appendChild(img);     
+        linkToDetails.appendChild(nameElement);     
+
 
         const locationElement = document.createElement('p');
         locationElement.textContent = city + ', ' + country;
@@ -30,7 +33,6 @@ function photographerFactory(data) {
         priceElement.classList.add('photographer_section--price');
 
         article.appendChild(linkToDetails);
-        article.appendChild(nameElement);
         article.appendChild(locationElement);
         article.appendChild(taglineElement);
         article.appendChild(priceElement);
