@@ -24,16 +24,32 @@ async function photographerMedia(data, id) {
     return photographerMedias;
 }
 
+
+async function displayData(data, id) {
+    const infos = await photographerInfo(data, id);
+    const photographerModel = photographerFactory(infos);
+    
+    // Construction du header
+    const photographerHeader = document.querySelector(".photograph-header");
+    const photographerInfos = photographerModel.getHeaderInfos();
+    const photographerProfilePicture = photographerModel.getProfilePicture();
+
+    photographerHeader.insertBefore(photographerInfos, photographerHeader.firstChild);
+    photographerHeader.appendChild(photographerProfilePicture);
+
+
+
+};
+
 async function init() {
     const params = (new URL(document.location)).searchParams;
     const id = params.get('id'); 
     const data = await getJson();
-    const infos = await photographerInfo(data, id);
-    const medias = await photographerMedia(data, id);
+    // const medias = await photographerMedia(data, id);
 
-    console.log(infos);
-    console.log("=====================");
-    console.log(medias);
+    // console.log(medias);
+
+    displayData(data, id);
 };
 
 

@@ -10,8 +10,10 @@ function photographerFactory(data) {
         linkToDetails.href = "http://127.0.0.1:5500/photographer.html?id=" + id;
 
         const img = document.createElement( 'img' );
-        // img.setAttribute("src", picture);
+        img.setAttribute("src", picture);
         img.alt = "";
+        img.classList.add('photographer_profile_picture');
+
 
         const nameElement = document.createElement( 'h2' );
         nameElement.textContent = name;
@@ -39,5 +41,39 @@ function photographerFactory(data) {
 
         return (article);
     }
-    return { name, picture, getUserCardDOM }
+
+    function getHeaderInfos() {
+        const photographerInfos = document.createElement( 'div' );
+
+        const nameElement = document.createElement( 'h2' );
+        nameElement.textContent = name;
+
+        const locationElement = document.createElement('p');
+        locationElement.textContent = city + ', ' + country;
+        locationElement.classList.add('photographer_section--location');
+
+        const taglineElement = document.createElement('p');
+        taglineElement.textContent = tagline;
+        taglineElement.classList.add('photographer_section--tagline');
+
+        photographerInfos.appendChild(nameElement);
+        photographerInfos.appendChild(locationElement);
+        photographerInfos.appendChild(taglineElement);
+
+        return (photographerInfos);
+    }
+
+    function getProfilePicture() {
+        const photographerProfilePicture = document.createElement( 'div' );
+
+        const img = document.createElement( 'img' );
+        img.setAttribute("src", picture);
+        img.alt = name;
+        img.classList.add('photographer_profile_picture');
+
+        photographerProfilePicture.appendChild(img);
+
+        return (photographerProfilePicture);
+    }
+
 }
