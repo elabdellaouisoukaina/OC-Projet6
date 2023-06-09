@@ -10,7 +10,7 @@ function photographerFactory(data) {
         linkToDetails.href = "http://127.0.0.1:5500/photographer.html?id=" + id;
 
         const img = document.createElement( 'img' );
-        img.setAttribute("src", picture);
+        // img.setAttribute("src", picture);
         img.alt = "";
 
         const nameElement = document.createElement( 'h2' );
