@@ -27,9 +27,9 @@ async function photographerMedia(data, id) {
 
 async function displayData(data, id) {
     const infos = await photographerInfo(data, id);
-    const photographerModel = photographerFactory(infos);
     
     // Construction du header
+    const photographerModel = photographerFactory(infos);
     const photographerHeader = document.querySelector(".photograph-header");
     const photographerInfos = photographerModel.getHeaderInfos();
     const photographerProfilePicture = photographerModel.getProfilePicture();
@@ -38,8 +38,9 @@ async function displayData(data, id) {
     photographerHeader.appendChild(photographerProfilePicture);
 
     // Construction de la gallerie
+    const galleryModel = mediasFactory(infos);
     const medias = await photographerMedia(data, id);
-    const photographerMedias = photographerModel.getGallery(medias);
+    const photographerMedias = galleryModel.getGallery(medias);
 
     const photographerGallery = document.querySelector(".photograph-gallery");
     photographerGallery.appendChild(photographerMedias);
