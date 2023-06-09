@@ -37,7 +37,12 @@ async function displayData(data, id) {
     photographerHeader.insertBefore(photographerInfos, photographerHeader.firstChild);
     photographerHeader.appendChild(photographerProfilePicture);
 
+    // Construction de la gallerie
+    const medias = await photographerMedia(data, id);
+    const photographerMedias = photographerModel.getGallery(medias);
 
+    const photographerGallery = document.querySelector(".photograph-gallery");
+    photographerGallery.appendChild(photographerMedias);
 
 };
 

@@ -105,3 +105,16 @@ h1 {
     text-align: center;    
     margin: 0;
 }
+
+.photographer-gallery {
+
+}
+
+.photographer_gallery--element {
+    height: 351px;
+    width: 350px;
+    left: 990px;
+    top: 547px;
+    border-radius: 0px;
+    object-fit: cover;
+}
