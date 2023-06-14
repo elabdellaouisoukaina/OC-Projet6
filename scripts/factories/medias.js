@@ -2,7 +2,6 @@ function mediasFactory(data) {
     const { name } = data;
 
     function getGallery(medias) {
-        console.log(medias)
         const gallery = document.createElement( 'div' );
         for (var i = 0; i < medias.length; i++) {
             let img = document.createElement( 'img' );
@@ -17,6 +16,32 @@ function mediasFactory(data) {
         return (gallery);
     }
 
-    return { getGallery }
+    function getGalleryFilterByPopularity(mediasUnsorted){
+        return mediasUnsorted.sort(function(a, b){
+            return b.likes - a.likes;
+        });
+    }
+
+    function getGalleryFilterByDate(mediasUnsorted){
+        let medias = mediasUnsorted.sort(function(a, b){
+            return new Date(a.date).getTime() - new Date(b.date).getTime();
+        });
+        medias = medias.reverse();
+        return medias
+    }
+
+    function getGalleryFilterByTitle(mediasUnsorted){
+        return mediasUnsorted.sort(function(a, b) {    
+            if (a.title > b.title) {    
+                return 1;    
+            } else if (a.title < b.title) {    
+                return -1;    
+            }    
+                return 0;    
+            }    
+        )
+    }
+
+    return { getGallery, getGalleryFilterByPopularity, getGalleryFilterByDate, getGalleryFilterByTitle}
 }
 

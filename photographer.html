@@ -17,6 +17,16 @@
       <div class="photograph-header">
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
+
+      <div id="filter">
+        <p>Filtrer par</p>
+        <div>
+          <button class="btn active" onclick="filterMedias('popularity')"> Popularité</button>
+          <button class="btn" onclick="filterMedias('date')"> Date</button>
+          <button class="btn" onclick="filterMedias('title')"> Titre</button>
+        </div>
+      </div>
+        
       <div class="photograph-gallery"></div>
     </main>
     <div id="contact_modal">
