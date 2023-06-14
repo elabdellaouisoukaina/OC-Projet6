@@ -50,11 +50,13 @@ function photographerFactory(data) {
 
         const locationElement = document.createElement('p');
         locationElement.textContent = city + ', ' + country;
-        locationElement.classList.add('photographer_section--location');
+        locationElement.classList.add('photograph_header--location');
 
         const taglineElement = document.createElement('p');
         taglineElement.textContent = tagline;
-        taglineElement.classList.add('photographer_section--tagline');
+        taglineElement.classList.add('photograph_header--tagline');
+
+        photographerInfos.classList.add('photograph-header--div-infos');
 
         photographerInfos.appendChild(nameElement);
         photographerInfos.appendChild(locationElement);
@@ -72,6 +74,7 @@ function photographerFactory(data) {
         img.classList.add('photographer_profile_picture');
 
         photographerProfilePicture.appendChild(img);
+        photographerProfilePicture.classList.add('photograph-header--div-img');
 
         return (photographerProfilePicture);
     }
