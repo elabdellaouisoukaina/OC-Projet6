@@ -6,22 +6,19 @@ async function getJson() {
 
 async function photographerInfo(data, id) {
     let photographers = data.photographers;
-    for (var i = 0; i < photographers.length; i++) {
-        if (photographers[i].id == id) {
-            return photographers[i];
-        }
+    const result = photographers.find(photographer =>  photographer.id === parseInt(id));
+
+    if (!result) {
+        alert("Photographe non défini")
     }
+
+    return result;
 }
 
 async function photographerMedia(data, id) {
     let medias = data.media;
-    let photographerMedias = [];
-    for (var i = 0; i < medias.length; i++) {
-        if (medias[i].photographerId == id) {
-            photographerMedias.push(medias[i]);
-        }
-    }
-    return photographerMedias;
+
+    return medias.filter(media =>  media.photographerId === parseInt(id));
 }
 
 
