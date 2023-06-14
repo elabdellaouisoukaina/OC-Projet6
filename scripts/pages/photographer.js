@@ -32,14 +32,15 @@ async function displayHeader(data, id){
     photographerHeader.appendChild(photographerProfilePicture);
 }
 
-async function displayGallery(data, id) {
+async function displayGallery(id, medias) {
+    // Vide la gallery pour pouvoir afficher si fonction de tri
+    document.querySelector(".photograph-gallery").innerHTML = "";
+
+    // Affiche la gallerie
+    const data = await getJson();
     const infos = await photographerInfo(data, id);
     const galleryModel = mediasFactory(infos);
-    const medias = await photographerMedia(data, id);
-    const photographerMedias = galleryModel.getGallery(medias);
-
-    const photographerGallery = document.querySelector(".photograph-gallery");
-    photographerGallery.appendChild(photographerMedias);
+    galleryModel.createGallery(medias);
 };
 
 
@@ -55,29 +56,34 @@ async function filterMedias(filter) {
 
     if (filter === 'popularity') {
         medias = galleryModel.getGalleryFilterByPopularity(medias);
-        // displayGallery(data, id);
-        console.log(galleryModel.getGalleryFilterByPopularity(medias));
+        displayGallery(id, medias);
     } 
-
-    if (filter === 'date') {
+    
+    else if (filter === 'date') {
         medias = galleryModel.getGalleryFilterByDate(medias);
-        console.log(galleryModel.getGalleryFilterByDate(medias));
-    }
-
-    if (filter === 'title') {
+        displayGallery(id, medias);    
+    } 
+    
+    else if (filter === 'title') {
         medias = galleryModel.getGalleryFilterByTitle(medias);
-        console.log(galleryModel.getGalleryFilterByTitle(medias));
+        displayGallery(id, medias);    
+    } 
+    
+    else {
+        // return erreur : tri impossible
+        alert("Tri des photos impossible");
     }
-    // return erreur 
+   
 }
 
 async function init() {
     const params = (new URL(document.location)).searchParams;
     const id = params.get('id'); 
     const data = await getJson();
+    const medias = await photographerMedia(data, id);
 
     displayHeader(data, id);
-    displayGallery(data, id);
+    displayGallery(id, medias);
 };
 
 

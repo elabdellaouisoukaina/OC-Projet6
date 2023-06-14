@@ -1,8 +1,9 @@
 function mediasFactory(data) {
     const { name } = data;
 
-    function getGallery(medias) {
-        const gallery = document.createElement( 'div' );
+    function createGallery(medias) {
+        const gallery = document.querySelector(".photograph-gallery");
+
         for (var i = 0; i < medias.length; i++) {
             let img = document.createElement( 'img' );
             let imgUrl = `assets/images/${name}/${medias[i].image}`;
@@ -42,6 +43,6 @@ function mediasFactory(data) {
         )
     }
 
-    return { getGallery, getGalleryFilterByPopularity, getGalleryFilterByDate, getGalleryFilterByTitle}
+    return { createGallery, getGalleryFilterByPopularity, getGalleryFilterByDate, getGalleryFilterByTitle}
 }
 
