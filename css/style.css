@@ -156,7 +156,11 @@ h2 {
     justify-content: flex-end;
 }
 
-.photographer-gallery {
+.photograph-gallery--filter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 
 .photograph-gallery {
     display: grid;
