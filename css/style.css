@@ -158,13 +158,16 @@ h2 {
 
 .photographer-gallery {
 
+.photograph-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap : 20px;
+    margin-top: 30px;
 }
 
 .photographer_gallery--element {
-    height: 351px;
+    height: 300px;
     width: 350px;
-    left: 990px;
-    top: 547px;
     border-radius: 0px;
     object-fit: cover;
 }
