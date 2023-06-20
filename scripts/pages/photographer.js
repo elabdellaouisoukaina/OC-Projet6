@@ -98,7 +98,7 @@ async function initEventListenerFilter (){
                 displayGallery(infos, medias);
                 filterSelected = 4;
             }
-            
+
             previousFilter = element;
         });
     });
@@ -108,6 +108,14 @@ async function initEventListenerFilter (){
     //         filterMedias(index);
     //     });
     // });
+}
+
+async function initEventListenerLikes(){
+    Array.prototype.forEach.call(document.getElementsByClassName("likable"), function(element) {
+        element.addEventListener("click",() => { 
+            element.previousSibling.innerHTML =  parseInt(element.previousSibling.innerHTML) + 1;
+        });
+    })
 }
 
 async function init() {
@@ -120,6 +128,7 @@ async function init() {
     displayHeader(data, id);
     displayGallery(infos, medias);
     initEventListenerFilter();
+    initEventListenerLikes();
 };
 
 

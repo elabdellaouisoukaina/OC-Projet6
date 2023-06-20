@@ -25,11 +25,12 @@ function mediasFactory(data) {
 
             let likesDiv = document.createElement( 'div' );
             let likes = document.createElement( 'p' );
+            likes.classList.add('number-likes');
             likes.textContent = medias[i].likes;
             likesDiv.appendChild(likes);
 
             let heartIcon = document.createElement('i');
-            heartIcon.classList.add('fa-solid', 'fa-heart');
+            heartIcon.classList.add('fa-solid', 'fa-heart','likable');
             heartIcon.ariaLabel = medias[i].likes;
             likesDiv.appendChild(heartIcon);
 
