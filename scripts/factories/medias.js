@@ -1,9 +1,11 @@
 function mediasFactory(data) {
-    const { name } = data;
+    const { name, price} = data;
 
     function createGallery(medias) {
         const gallery = document.querySelector(".photograph-gallery");
+        var totalLikes = 0; 
 
+        // Création des posts pour chaque médias
         for (var i = 0; i < medias.length; i++) {
             let img = document.createElement( 'img' );
             let imgUrl = `assets/images/${name}/${medias[i].image}`;
@@ -12,8 +14,28 @@ function mediasFactory(data) {
             img.alt = medias[i].title;
             img.classList.add('photographer_gallery--element');
 
-            gallery.appendChild(img);
+            totalLikes = totalLikes + medias[i].likes;
         }
+
+        //Création de l'encart avec le nombre total de like et le prix
+        let divRightBottom = document.querySelector('.photograph-price');
+
+        let totalLikesDiv = document.createElement( 'div' );
+        let totalLikesP = document.createElement( 'p' );
+        totalLikesP.textContent = totalLikes;
+        totalLikesDiv.appendChild(totalLikesP);
+
+        let heartIcon = document.createElement('i');
+        heartIcon.classList.add('fa-solid', 'fa-heart');
+        heartIcon.ariaLabel = totalLikes;
+        totalLikesDiv.appendChild(heartIcon);
+
+        divRightBottom.appendChild(totalLikesDiv);
+
+        let priceP = document.createElement( 'p' );
+        priceP.textContent = price + '€ / jour'
+        divRightBottom.appendChild(priceP);
+
         return (gallery);
     }
 

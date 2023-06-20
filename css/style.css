@@ -172,11 +172,32 @@ h2 {
     grid-template-columns: 1fr 1fr 1fr;
     gap : 20px;
     margin-top: 30px;
+    position: relative;
 }
 
-.photographer_gallery--element {
+.photographer_gallery--element__img {
     height: 300px;
     width: 350px;
     border-radius: 0px;
     object-fit: cover;
+}
+
+.photograph-price {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    background-color: #CB8876;
+    width: 370px;
+    height: 60px;
+    border-radius: 5px;
+    margin-right: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.photograph-price div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
