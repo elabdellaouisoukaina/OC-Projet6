@@ -114,7 +114,8 @@ async function initEventListenerLikes(){
     Array.prototype.forEach.call(document.getElementsByClassName("likable"), function(element) {
         element.addEventListener("click",() => { 
             element.previousSibling.innerHTML =  parseInt(element.previousSibling.innerHTML) + 1;
-        });
+            document.querySelector('.photograph-price div p').innerHTML = parseInt(document.querySelector('.photograph-price div p').innerHTML) + 1;
+        }, {once : true});
     })
 }
 
