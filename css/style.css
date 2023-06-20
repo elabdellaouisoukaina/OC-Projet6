@@ -162,6 +162,11 @@ h2 {
     align-items: center;
 }
 
+.photograph-gallery--filter__selected {
+    background-color: #901C1C;
+    color: white;
+}
+
 .photograph-gallery {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
