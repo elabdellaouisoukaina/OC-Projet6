@@ -119,6 +119,21 @@ async function initEventListenerLikes(){
     })
 }
 
+async function initEventListenerLightbox(){
+    let medias = document.getElementsByClassName("photographer_gallery--element__img");
+    Array.prototype.forEach.call(medias, function(element, index) {
+        element.addEventListener("click",() => { 
+            // Affiche la lightbox
+            document.querySelector("#myModal").style.display = "block";
+
+            // Affiche image selectionnée
+            document.querySelector('.lighbox-img').src = element.src;      
+        });
+
+        
+    })
+}
+
 async function init() {
     const params = (new URL(document.location)).searchParams;
     const id = params.get('id'); 
@@ -130,6 +145,7 @@ async function init() {
     displayGallery(infos, medias);
     initEventListenerFilter();
     initEventListenerLikes();
+    initEventListenerLightbox();
 };
 
 
