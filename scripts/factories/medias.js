@@ -24,11 +24,9 @@ function mediasFactory(data) {
     }
 
     function getGalleryFilterByDate(mediasUnsorted){
-        let medias = mediasUnsorted.sort(function(a, b){
-            return new Date(a.date).getTime() - new Date(b.date).getTime();
+        return mediasUnsorted.sort(function(a, b){
+            return new Date(b.date).getTime() - new Date(a.date).getTime();
         });
-        medias = medias.reverse();
-        return medias
     }
 
     function getGalleryFilterByTitle(mediasUnsorted){
