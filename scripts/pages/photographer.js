@@ -75,6 +75,7 @@ async function filterMedias(filter) {
 
 async function initEventListenerFilter (){
     var filterSelected = 4; // 4 = aucun filtre selectionné
+    let previousFilter = "";
     const params = (new URL(document.location)).searchParams;
     const id = params.get('id'); 
     const data = await getJson();
@@ -84,14 +85,21 @@ async function initEventListenerFilter (){
     Array.prototype.forEach.call(document.getElementsByClassName("filter-btn"), function(element, index) {
         element.addEventListener("click",() => { 
             if (filterSelected !== index) {
+                if (previousFilter !== "") {
+                    previousFilter.classList.remove('photograph-gallery--filter__selected');
+                }
+                element.classList.add('photograph-gallery--filter__selected');
                 filterMedias(index);
-                filterSelected = index;
+                filterSelected = index;                
             } 
 
             else if (filterSelected === index) {
+                element.classList.remove('photograph-gallery--filter__selected');
                 displayGallery(infos, medias);
                 filterSelected = 4;
             }
+            
+            previousFilter = element;
         });
     });
     
