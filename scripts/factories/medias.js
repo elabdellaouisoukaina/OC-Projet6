@@ -7,12 +7,36 @@ function mediasFactory(data) {
 
         // Création des posts pour chaque médias
         for (var i = 0; i < medias.length; i++) {
+            let post = document.createElement( 'div' );
+
             let img = document.createElement( 'img' );
             let imgUrl = `assets/images/${name}/${medias[i].image}`;
-        
             img.setAttribute("src", imgUrl);
             img.alt = medias[i].title;
-            img.classList.add('photographer_gallery--element');
+            img.classList.add('photographer_gallery--element__img');
+            post.appendChild(img);
+
+            let divInfos = document.createElement( 'div' );
+            divInfos.classList.add('photographer_gallery--element__infos');
+
+            let title = document.createElement( 'p' );
+            title.textContent = medias[i].title;
+            divInfos.appendChild(title);
+
+            let likesDiv = document.createElement( 'div' );
+            let likes = document.createElement( 'p' );
+            likes.textContent = medias[i].likes;
+            likesDiv.appendChild(likes);
+
+            let heartIcon = document.createElement('i');
+            heartIcon.classList.add('fa-solid', 'fa-heart');
+            heartIcon.ariaLabel = medias[i].likes;
+            likesDiv.appendChild(heartIcon);
+
+            divInfos.appendChild(likesDiv);
+
+            post.appendChild(divInfos);
+            gallery.appendChild(post);
 
             totalLikes = totalLikes + medias[i].likes;
         }
