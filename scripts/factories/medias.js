@@ -1,4 +1,6 @@
-function mediasFactory(data) {
+import { setCurrentMedias } from "../state/state.js";
+
+export function mediasFactory(data) {
     const { name, price} = data;
 
     function createGallery(medias) {

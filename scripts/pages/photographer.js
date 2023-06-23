@@ -1,3 +1,8 @@
+import {getCurrentMedias, setCurrentMedias} from "../state/state.js"
+import {photographerFactory} from "../factories/photographer.js"
+import {mediasFactory} from "../factories/medias.js"
+
+
 async function getJson() {
     const response = await fetch('../../../data/photographers.json');
     const data = await response.json();
@@ -39,7 +44,7 @@ async function displayGallery(infos, medias) {
     // Affiche la gallerie
     const galleryModel = mediasFactory(infos);
     galleryModel.createGallery(medias);
-};
+}
 
 
 async function filterMedias(filter) {
@@ -180,7 +185,7 @@ async function init() {
     initEventListenerFilter();
     initEventListenerLikes();
     initEventListenerLightbox();
-};
+}
 
 
 
