@@ -119,18 +119,52 @@ async function initEventListenerLikes(){
     })
 }
 
+// Affiche lightbox
+function displayLightbox() {
+    document.querySelector("#lightbox").style.display = "block";
+}
+
+// Ferme lightbox
+function initCloseButton() {
+    document.querySelector('.close').addEventListener("click", () => {
+        document.getElementById("lightbox").style.display = "none";
+    })
+}  
+  
+
 async function initEventListenerLightbox(){
     let medias = document.getElementsByClassName("photographer_gallery--element__img");
+
+    initCloseButton();
+
     Array.prototype.forEach.call(medias, function(element, index) {
-        element.addEventListener("click",() => { 
+        element.addEventListener("click", () => { 
             // Affiche la lightbox
-            document.querySelector("#myModal").style.display = "block";
+            displayLightbox();
 
             // Affiche image selectionnée
-            document.querySelector('.lighbox-img').src = element.src;      
-        });
+            document.querySelector('.lighbox-img').src = element.src;  
 
-        
+            // Bouton précédent
+            document.querySelector('.prev').addEventListener("click", () => {
+                document.querySelector('.lighbox-img').src = medias[index-1].src;
+
+                // Bouton suivant
+                document.querySelector('.next').addEventListener("click", () => {
+                    document.querySelector('.lighbox-img').src = medias[index].src;
+                })
+            })
+
+            // Bouton suivant
+            document.querySelector('.next').addEventListener("click", () => {
+                document.querySelector('.lighbox-img').src = medias[index+1].src;
+
+                // Bouton précédent
+                document.querySelector('.prev').addEventListener("click", () => {
+                    document.querySelector('.lighbox-img').src = medias[index].src;
+                })
+            });
+        })
     })
 }
 

@@ -216,6 +216,37 @@ h2 {
     align-items: center;
 }
 
-#myModal {
+#lightbox {
     display: none;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    overflow: auto;
+    background-color: white;
+}
+
+.close {
+    margin: 20px;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.mySlide {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.mySlide img {
+    width: auto;
+    height: 80vh;
+    object-fit: contain;
 }
