@@ -144,30 +144,37 @@ async function initEventListenerLightbox(){
 
     Array.prototype.forEach.call(medias, function(element, index) {
         element.addEventListener("click", () => { 
+            let currentIndex = index;
+
             // Affiche la lightbox
             displayLightbox();
 
-            // Affiche image selectionnée
+            // Mets à jour HTML pour image selectionnée
             document.querySelector('.lighbox-img').src = element.src;  
+            document.querySelector('.lightbox-img__title').innerHTML = element.alt;  
 
             // Bouton précédent
             document.querySelector('.prev').addEventListener("click", () => {
-                document.querySelector('.lighbox-img').src = medias[index-1].src;
+                if (currentIndex != 0) {
+                    currentIndex = currentIndex - 1;
+                } else {
+                    currentIndex = medias.length - 1; // Affiche la dernière image après la première
+                }
+                document.querySelector('.lighbox-img').src = medias[currentIndex].src;
+                document.querySelector('.lightbox-img__title').innerHTML = medias[currentIndex].alt;  
 
-                // Bouton suivant
-                document.querySelector('.next').addEventListener("click", () => {
-                    document.querySelector('.lighbox-img').src = medias[index].src;
-                })
             })
 
             // Bouton suivant
             document.querySelector('.next').addEventListener("click", () => {
-                document.querySelector('.lighbox-img').src = medias[index+1].src;
+                if (currentIndex !=  medias.length - 1) {
+                    currentIndex = currentIndex + 1;
+                } else {
+                    currentIndex = 0; // Affiche la première image après la dernière
+                }
+                document.querySelector('.lighbox-img').src = medias[currentIndex].src;
+                document.querySelector('.lightbox-img__title').innerHTML = medias[currentIndex].alt;  
 
-                // Bouton précédent
-                document.querySelector('.prev').addEventListener("click", () => {
-                    document.querySelector('.lighbox-img').src = medias[index].src;
-                })
             });
         })
     })
