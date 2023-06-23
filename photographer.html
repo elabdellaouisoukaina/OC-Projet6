@@ -15,7 +15,7 @@
     </header>
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button">Contactez-moi</button>
       </div>
 
       <div class="photograph-gallery--filter">
@@ -29,21 +29,66 @@
       <div class="photograph-gallery"></div>
       <div class="photograph-price"></div>
     </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
+
+    <div class="contact-modal">
+        <div class="content">
+          <div class="modal-body">
+
+            <div class="contact-form--form-sent">
+              <div>
+                <header>
+                  <img src="assets/icons/close.svg" class="contact-form--close-button" />
+                </header>
+
+                <p>Message envoyé</p>
+              </div>
+            </div>
+
+            <header class="contact-form--header">
+              <div class="contact-form--title"></div>
+              <img src="assets/icons/close.svg" class="contact-form--close-button" />
+            </header>
+
+            <form id="contactForm" name="reserve">
+              <div class="formData">
+                <label for="first">Prénom</label>
+                <input class="text-control" type="text" id="first" name="first"/>
+                <p id="firstError" class="errorMessage">
+                  Veuillez entrer 2 caractères ou plus pour le champ du prénom.
+                </p>
+              </div>
+
+              <div class="formData">
+                <label for="last">Nom</label>
+                <input class="text-control" type="text" id="last" name="last"/>
+                <p id="lastError" class="errorMessage">
+                  Veuillez entrer 2 caractères ou plus pour le champ du nom.
+                </p>
+              </div> 
+
+              <div class="formData">
+                <label for="email">E-mail</label>
+                <input class="text-control" type="text" id="email" name="email"/>
+                <p id="emailError" class="errorMessage">
+                  Veuillez entrer un e-mail valide.
+                </p>
+              </div>
+
+              <div class="formData">
+                <label for="message">Votre message</label>
+                <textarea class="text-control" id="message" name="message" rows="5" cols="33"></textarea>
+              </div>
+      
+              <input
+                class="btn-submit"
+                type="submit"
+                class="button"
+                value="Envoyer"
+              />
+            </form>
+          </div>
+        </div>
+      </div>
 
     <!-- The Modal/Lightbox -->
     <div id="lightbox">
@@ -61,8 +106,8 @@
       </div>
     </div>
 
-    
     <script src="/scripts/pages/photographer.js" type="module"></script>
+
     <!-- Ajout du kit Font Awesome -->
     <script src="https://kit.fontawesome.com/ab0586a43a.js" crossorigin="anonymous"></script>
   </body>

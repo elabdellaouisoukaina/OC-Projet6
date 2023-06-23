@@ -36,6 +36,8 @@ h2 {
     margin: 0;
 }
 
+/* ________________________________________ PAGE ACCUEIL ________________________________________ */
+
 .logo {
     height: 50px;
 }
@@ -99,24 +101,11 @@ h2 {
     text-align: center;    
 }
 
-.photograph_header--location {
-    font-size: 24px;
-    line-height: 31px;
-    text-align: left;
-}
-
 .photographer_section--tagline {
     color: #000000;
     font-size: 10px;
     line-height: 13px;
     text-align: center;
-}
-
-.photograph_header--tagline {
-    color: #525252;
-    font-size: 18px;
-    line-height: 23px;
-    text-align: left;    
 }
 
 .photographer_section--price {
@@ -126,6 +115,10 @@ h2 {
     text-align: center;    
 }
 
+/* ________________________________________ PAGE PHOTOGRAPHE ________________________________________ */
+
+/* ------------------------------ HEADER ------------------------------ */
+
 .photograph-header {
     padding: 0 30px;
     display: flex;
@@ -133,6 +126,19 @@ h2 {
     justify-content: space-between;
     align-items: center;
     margin: 0;
+}
+
+.photograph_header--location {
+    font-size: 24px;
+    line-height: 31px;
+    text-align: left;
+}
+
+.photograph_header--tagline {
+    color: #525252;
+    font-size: 18px;
+    line-height: 23px;
+    text-align: left;    
 }
 
 .photograph-header--div-infos, .photograph-header--div-img {
@@ -155,6 +161,9 @@ h2 {
 .photograph-header--div-img {
     justify-content: flex-end;
 }
+
+
+/* ------------------------------ GALERIE ------------------------------ */
 
 .photograph-gallery--filter {
     display: flex;
@@ -196,6 +205,9 @@ h2 {
     align-items: center;
 }
 
+
+/* ------------------------------ ENCART PRIX /  TOTAL LIKES ------------------------------ */
+
 .photograph-price {
     position: fixed;
     right: 0;
@@ -216,7 +228,10 @@ h2 {
     align-items: center;
 }
 
-#lightbox {
+
+/* ------------------------------ LIGHTBOX ------------------------------ */
+
+#lightbox, .contact-modal {
     display: none;
     width: 100vw;
     height: 100vh;
@@ -249,4 +264,67 @@ h2 {
     width: auto;
     height: 80vh;
     object-fit: contain;
+}
+
+
+/* ------------------------------ FORMULAIRE CONTACT ------------------------------ */
+
+.contact-modal {
+    background-color: rgba(82, 82, 82, 0.4);
+}
+
+.content {
+    margin: 5% auto;
+    height: 80%;
+    width: 50%;
+    background: #DB8876;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    color: #312E2E;
+    padding-top: 10px;
+}
+
+.modal-body {
+    padding: 15px 8%;
+    margin: 15px auto;
+    min-height: 710px;
+}
+
+.contact-form--form-sent {
+    display: none;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    height: 700px;
+}
+
+.btn-submit {
+    background: #901C1C;
+    margin: 0 auto;
+    border-radius: 7px;
+    font-size: 1rem;
+    padding: 12px 82px;
+    color: #fff;
+    cursor: pointer;
+    border: 0;
+}
+
+.errorMessage {
+    color : red;
+    display: none;
+    font-size: 10px;
+}
+
+.text-control {
+  margin: 0;
+  padding: 8px;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 20px;
+  height: 25px;
+}
+
+textarea {
+    border: 0;
 }

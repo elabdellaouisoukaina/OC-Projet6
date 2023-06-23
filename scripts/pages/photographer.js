@@ -1,15 +1,16 @@
 import {getCurrentMedias, setCurrentMedias} from "../state/state.js"
 import {photographerFactory} from "../factories/photographer.js"
 import {mediasFactory} from "../factories/medias.js"
+import {initContactForm} from "../utils/contactForm.js"
 
 
-async function getJson() {
+export async function getJson() {
     const response = await fetch('../../../data/photographers.json');
     const data = await response.json();
     return data;
 }
 
-async function photographerInfo(data, id) {
+export async function photographerInfo(data, id) {
     let photographers = data.photographers;
     const result = photographers.find(photographer =>  photographer.id === parseInt(id));
 
@@ -189,6 +190,7 @@ async function init() {
     
     displayHeader(data, id);
     displayGallery(infos, medias);
+    initContactForm();
     initEventListenerFilter();
     initEventListenerLikes();
     initEventListenerLightbox();
