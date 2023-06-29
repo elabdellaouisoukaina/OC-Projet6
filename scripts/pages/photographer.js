@@ -108,12 +108,6 @@ async function initEventListenerFilter(){
             previousFilter = element;
         });
     });
-    
-    // document.getElementsByClassName("filter-btn").forEach((element, index) => {
-    //     element.addEventListener("click",() => { 
-    //         filterMedias(index);
-    //     });
-    // });
 }
 
 export async function initEventListenerLikes(){
@@ -138,7 +132,7 @@ function initCloseButton() {
 }  
   
 
-async function initEventListenerLightbox(){
+export async function initEventListenerLightbox(){
     let medias = document.getElementsByClassName("photographer_gallery--element__img");
 
     initCloseButton();

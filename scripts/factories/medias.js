@@ -1,5 +1,5 @@
 import { setCurrentMedias } from "../state/state.js";
-import { initEventListenerLikes } from "../pages/photographer.js";
+import { initEventListenerLikes, initEventListenerLightbox} from "../pages/photographer.js";
 
 export function mediasFactory(data) {
     const { name, price} = data;
@@ -82,6 +82,7 @@ export function mediasFactory(data) {
 
         
         initEventListenerLikes();
+        initEventListenerLightbox();
 
         return (gallery);
     }
