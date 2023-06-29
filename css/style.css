@@ -13,6 +13,7 @@ header {
     justify-content: space-between;
     align-items: center;
     height: 90px;
+    margin: 15px 0;
 }
 
 h1 {
@@ -184,11 +185,15 @@ h2 {
     position: relative;
 }
 
+.photographer_gallery--element__img, .photographer_gallery--element__infos {
+    width: 350px;
+}
+
 .photographer_gallery--element__img {
     height: 300px;
-    width: 350px;
     border-radius: 0px;
     object-fit: cover;
+    border-radius: 5px;
 }
 
 .photographer_gallery--element__infos {
@@ -196,9 +201,11 @@ h2 {
     flex-direction: row;
     justify-content: space-between;
     color:#901C1C;
+    font-size: 24px;
 }
 
 .photographer_gallery--element__infos div {
+    gap: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -220,12 +227,15 @@ h2 {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
+    font-size: 24px;
 }
 
 .photograph-price div {
     display: flex;
     flex-direction: row;
     align-items: center;
+    gap: 10px;
 }
 
 
