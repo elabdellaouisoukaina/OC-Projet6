@@ -60,22 +60,24 @@ export function mediasFactory(data) {
 
         //Création de l'encart avec le nombre total de like et le prix
         let divRightBottom = document.querySelector('.photograph-price');
-
-        let totalLikesDiv = document.createElement( 'div' );
-        let totalLikesP = document.createElement( 'p' );
-        totalLikesP.textContent = totalLikes;
-        totalLikesDiv.appendChild(totalLikesP);
-
-        let heartIcon = document.createElement('i');
-        heartIcon.classList.add('fa-solid', 'fa-heart');
-        heartIcon.ariaLabel = totalLikes;
-        totalLikesDiv.appendChild(heartIcon);
-
-        divRightBottom.appendChild(totalLikesDiv);
-
-        let priceP = document.createElement( 'p' );
-        priceP.textContent = price + '€ / jour'
-        divRightBottom.appendChild(priceP);
+        
+        if (divRightBottom.innerHTML === "") {  
+            let totalLikesDiv = document.createElement( 'div' );
+            let totalLikesP = document.createElement( 'p' );
+            totalLikesP.textContent = totalLikes;
+            totalLikesDiv.appendChild(totalLikesP);
+    
+            let heartIcon = document.createElement('i');
+            heartIcon.classList.add('fa-solid', 'fa-heart');
+            heartIcon.ariaLabel = totalLikes;
+            totalLikesDiv.appendChild(heartIcon);
+    
+            divRightBottom.appendChild(totalLikesDiv);
+    
+            let priceP = document.createElement( 'p' );
+            priceP.textContent = price + '€ / jour'
+            divRightBottom.appendChild(priceP);
+        }
 
         return (gallery);
     }
