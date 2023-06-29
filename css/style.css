@@ -251,29 +251,41 @@ h2 {
     top: 0;
     overflow: auto;
     background-color: white;
+    color: #901C1C;
 }
 
 .close {
-    margin: 20px;
+    margin: 50px 60px;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 .modal-content {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    margin: 50px 60px 0 50px;
+    height: 100%;
+}
+
+.prev, .next {
+    height: 50px;
 }
 
 .mySlide {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    width: 90%;
 }
 
 .mySlide img {
     width: auto;
     height: 80vh;
-    object-fit: contain;
+    object-fit: cover;
+    /* object-position: 0 20%; */
 }
 
 

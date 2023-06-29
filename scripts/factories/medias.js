@@ -12,6 +12,7 @@ export function mediasFactory(data) {
         // Création des posts pour chaque médias
         for (var i = 0; i < medias.length; i++) {
             let post = document.createElement( 'div' );
+            post.classList.add('photographer_gallery--element');
 
             // Si le média est une image
             if (medias[i].hasOwnProperty('image')){
