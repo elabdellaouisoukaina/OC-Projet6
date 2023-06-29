@@ -79,7 +79,7 @@ async function filterMedias(filter) {
    
 }
 
-async function initEventListenerFilter (){
+async function initEventListenerFilter(){
     var filterSelected = 4; // 4 = aucun filtre selectionné
     let previousFilter = "";
     const params = (new URL(document.location)).searchParams;
@@ -116,7 +116,7 @@ async function initEventListenerFilter (){
     // });
 }
 
-async function initEventListenerLikes(){
+export async function initEventListenerLikes(){
     Array.prototype.forEach.call(document.getElementsByClassName("likable"), function(element) {
         element.addEventListener("click",() => { 
             element.previousSibling.innerHTML =  parseInt(element.previousSibling.innerHTML) + 1;

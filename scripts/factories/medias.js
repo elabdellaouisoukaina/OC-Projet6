@@ -1,4 +1,5 @@
 import { setCurrentMedias } from "../state/state.js";
+import { initEventListenerLikes } from "../pages/photographer.js";
 
 export function mediasFactory(data) {
     const { name, price} = data;
@@ -78,6 +79,9 @@ export function mediasFactory(data) {
             priceP.textContent = price + '€ / jour'
             divRightBottom.appendChild(priceP);
         }
+
+        
+        initEventListenerLikes();
 
         return (gallery);
     }
