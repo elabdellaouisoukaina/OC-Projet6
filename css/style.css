@@ -292,25 +292,57 @@ h2 {
 /* ------------------------------ FORMULAIRE CONTACT ------------------------------ */
 
 .contact-modal {
-    background-color: rgba(82, 82, 82, 0.4);
+    background-color: rgba(82, 82, 82, 0.1);
+}
+
+.contact-form--title {
+    font-size: 44px;
+    width: 70%;
+    color: black;
 }
 
 .content {
     margin: 5% auto;
     height: 80%;
-    width: 50%;
+    width: 600px;
     background: #DB8876;
     border-radius: 10px;
     overflow: hidden;
     position: relative;
     color: #312E2E;
     padding-top: 10px;
+    box-shadow: rgba(100, 100, 111, 0.7) 0px 7px 29px 0px;
 }
 
 .modal-body {
     padding: 15px 8%;
     margin: 15px auto;
     min-height: 710px;
+}
+
+.formData {
+    margin-bottom: 0;
+}
+
+.text-control {
+    margin: 0;
+    padding: 8px;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 15px;
+    height: 25px;
+}
+  
+.textarea {
+    border: 0;
+    height: 100px;
+}
+
+.errorMessage {
+    color : #901C1C;
+    display: none;
+    font-size: 15px;
+    margin: 0;
 }
 
 .contact-form--form-sent {
@@ -323,30 +355,13 @@ h2 {
 
 .btn-submit {
     background: #901C1C;
-    margin: 0 auto;
     border-radius: 7px;
     font-size: 1rem;
-    padding: 12px 82px;
     color: #fff;
     cursor: pointer;
     border: 0;
-}
-
-.errorMessage {
-    color : red;
-    display: none;
-    font-size: 10px;
-}
-
-.text-control {
-  margin: 0;
-  padding: 8px;
-  width: 100%;
-  border-radius: 8px;
-  font-size: 20px;
-  height: 25px;
-}
-
-textarea {
-    border: 0;
+    height: 50px;
+    width: 25%;
+    text-align: center;
+    margin-top: 15px;
 }

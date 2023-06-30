@@ -85,7 +85,7 @@ export async function initContactForm() {
     const data = await getJson();
     const infos = await photographerInfo(data, id);
     
-    document.querySelector('.contact-form--title').innerHTML = "Contactez moi " + infos.name;
+    document.querySelector('.contact-form--title').innerHTML = "Contactez-moi " + infos.name;
 
     document.querySelector("#contactForm").addEventListener("submit", (event)=>{
         event.preventDefault(); // Evite rechargement de la page (comportement par défault)
