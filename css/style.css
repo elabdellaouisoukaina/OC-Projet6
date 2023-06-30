@@ -241,7 +241,7 @@ h2 {
 
 /* ------------------------------ LIGHTBOX ------------------------------ */
 
-#lightbox, .contact-modal {
+#lightbox {
     display: none;
     width: 100vw;
     height: 100vh;
@@ -293,16 +293,32 @@ h2 {
 
 .contact-modal {
     background-color: rgba(82, 82, 82, 0.1);
+    display: none;
+    width: 100vw;
+    height: 800px;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    overflow: auto;
+    color: #901C1C;
+}
+
+.contact-form--close-button {
+    position: absolute;
+    top: 4Opx;
+    right: 40px;
 }
 
 .contact-form--title {
     font-size: 44px;
     width: 70%;
     color: black;
+    margin-bottom: 10px;
 }
 
 .content {
-    margin: 5% auto;
+    margin: 30px auto;
     height: 80%;
     width: 600px;
     background: #DB8876;
@@ -327,7 +343,7 @@ h2 {
 .text-control {
     margin: 0;
     padding: 8px;
-    width: 100%;
+    width: 97%;
     border-radius: 8px;
     font-size: 15px;
     height: 25px;

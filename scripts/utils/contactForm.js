@@ -7,6 +7,7 @@ function displayModal() {
 
 // Ferme la modale au click sur la X
 function closeModal() {
+    document.querySelector(".contact-modal").style.height = "800px";
     document.querySelector(".contact-modal").style.display = 'none';
     document.querySelector(".contact-form--form-sent").style.display = "none";  
     document.getElementById("contactForm").style.display = "block";  
@@ -64,6 +65,8 @@ function validateAll(){
     if (isFirstValid && isLastValid && isEmailValid){ 
         return true;
     } 
+
+    document.querySelector(".contact-modal").style.height = "850px";
     return false;
     
 }
