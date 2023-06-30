@@ -1,4 +1,4 @@
-import { setCurrentMedias } from "../state/state.js";
+// import { setCurrentMedias } from "../state/state.js";
 import { initEventListenerLikes, initEventListenerLightbox} from "../pages/photographer.js";
 
 export function mediasFactory(data) {

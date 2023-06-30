@@ -1,4 +1,4 @@
-import {getCurrentMedias, setCurrentMedias} from "../state/state.js"
+// import {getCurrentMedias, setCurrentMedias} from "../state/state.js"
 import {photographerFactory} from "../factories/photographer.js"
 import {mediasFactory} from "../factories/medias.js"
 import {initContactForm} from "../utils/contactForm.js"
