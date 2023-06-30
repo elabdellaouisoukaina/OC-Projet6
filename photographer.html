@@ -35,16 +35,11 @@
           <div class="modal-body">
 
             <div class="contact-form--form-sent">
-              <div>
-                <header>
-                  <img src="assets/icons/close.svg" class="contact-form--close-button" />
-                </header>
-
-                <p>Message envoyé</p>
-              </div>
+              <img src="assets/icons/close.svg" class="contact-form--close-button" />
+              <p class="messageSent">Merci ! Votre message a bien été envoyé.</p>
             </div>
 
-            <img src="assets/icons/close.svg" class="contact-form--close-button" />
+            <img src="assets/icons/close.svg" class="contact-form--close-button" id="closeForm"/>
 
             <div class="contact-form--title"></div>
 
@@ -76,6 +71,9 @@
               <div class="formData">
                 <label for="message">Votre message</label>
                 <textarea class="text-control textarea" id="message" name="message" rows="5" cols="33"></textarea>
+                <p id="messageError" class="errorMessage">
+                  Votre message ne peut être vide.
+                </p>
               </div>
       
               <input

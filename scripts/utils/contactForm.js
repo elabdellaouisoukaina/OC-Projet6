@@ -3,6 +3,8 @@ import {getJson, photographerInfo} from "../pages/photographer.js"
 // Affiche la modale
 function displayModal() {
     document.querySelector(".contact-modal").style.display = "block";
+    document.querySelector(".contact-form--title").style.display =  "flex";
+    document.querySelector("#closeForm").style.display =  "flex";
 }
 
 // Ferme la modale au click sur la X
@@ -55,18 +57,32 @@ function emailValid(email){
     }
 }
 
+// Valide le champs message : retourne true si remmpli
+function messageValid(message){
+    // Validation champs prénom et affichage du message d'erreur si saisie incorrecte
+    if (message.length > 0) { // Saisie prénom minimum deux caractères, n'est pas vide
+        document.getElementById("messageError").style.display = "none";
+        return true;
+    } else { // Affichage du message d'erreur si saisie incorrecte
+        document.getElementById("messageError").style.display = "block";
+        return false;
+    }
+}
+
 // Vérifie la validité des champs saisis et renvoi true si formulaire correctement complété
 function validateAll(){
     // Vérifie que tous les champs sont valides et retourne un bouléen pour dire si entierté du form valide ou non
     const isFirstValid = firstValid(document.getElementById("first").value);
     const isLastValid = lastValid(document.getElementById("last").value);
     const isEmailValid = emailValid(document.getElementById("email").value);
+    const isMessageValid = messageValid(document.getElementById("message").value);
 
-    if (isFirstValid && isLastValid && isEmailValid){ 
+    if (isFirstValid && isLastValid && isEmailValid && isMessageValid){ 
         return true;
     } 
 
-    document.querySelector(".contact-modal").style.height = "850px";
+    document.querySelector(".contact-modal").style.height = "875px";
+    document.querySelector('.messageSent').style.margin = "50% 0";
     return false;
     
 }
@@ -97,7 +113,8 @@ export async function initContactForm() {
             
             document.querySelector("#contactForm").reset(); // Réinitialise le formulaire
             document.querySelector("#contactForm").style.display =  "none";
-            // document.querySelector(".contact-form--title").style.display =  "none";
+            document.querySelector(".contact-form--title").style.display =  "none";
+            document.querySelector("#closeForm").style.display =  "none";
         
             // Affiche message de confirmation d'envoi du formulaire
             document.querySelector(".contact-form--form-sent").style.display = "flex";

@@ -326,8 +326,12 @@ h2 {
     overflow: hidden;
     position: relative;
     color: #312E2E;
-    padding-top: 10px;
     box-shadow: rgba(100, 100, 111, 0.7) 0px 7px 29px 0px;
+}
+
+.messageSent {
+    font-size: 44px;
+    margin: 40% 0;
 }
 
 .modal-body {
