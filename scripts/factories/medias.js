@@ -6,31 +6,35 @@ export function mediasFactory(data) {
 
     function createGallery(medias) {
         const gallery = document.querySelector(".photograph-gallery");
-        var totalLikes = 0;
+        let totalLikes = 0;
 
 
         // Création des posts pour chaque médias
-        for (var i = 0; i < medias.length; i++) {
+        for (let i = 0; i < medias.length; i++) {
             let post = document.createElement( 'div' );
             post.classList.add('photographer_gallery--element');
 
             // Si le média est une image
             if (medias[i].hasOwnProperty('image')){
-                console.log(i + " : image")
                 let img = document.createElement( 'img' );
                 let imgUrl = `assets/images/${name}/${medias[i].image}`;
                 img.setAttribute("src", imgUrl);
                 img.alt = medias[i].title;
-                img.classList.add('photographer_gallery--element__img');
+                img.classList.add('photographer_gallery--element__img', 'photographer_gallery--element__media');
                 post.appendChild(img);
             }
+
             // Si le média est une vidéo
             else if (medias[i].hasOwnProperty('video')) {
-                console.log(i + " : vidéo")
-                //construire video
-                // <video>
-                //     <source src="movie.mp4" type="video/mp4">
-                // </video>
+                let video = document.createElement('video');
+                video.classList.add("photographer_gallery--element__video", "photographer_gallery--element__media");
+                video.title = medias[i].title;
+                let source = document.createElement('source');
+                let videoUrl = `assets/images/${name}/${medias[i].video}`;
+                source.setAttribute('src', videoUrl);
+                source.setAttribute('type', "video/mp4");
+                video.appendChild(source);
+                post.appendChild(video);
             }
             
 

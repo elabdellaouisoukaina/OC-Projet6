@@ -185,11 +185,11 @@ h2 {
     position: relative;
 }
 
-.photographer_gallery--element__img, .photographer_gallery--element__infos {
+.photographer_gallery--element__img, .photographer_gallery--element__infos, .photographer_gallery--element__video {
     width: 350px;
 }
 
-.photographer_gallery--element__img {
+.photographer_gallery--element__img, .photographer_gallery--element__video {
     height: 300px;
     border-radius: 0px;
     object-fit: cover;
@@ -277,17 +277,25 @@ h2 {
 .mySlide {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
-    width: 90%;
+    width: auto;
+    max-width: 90%;
 }
 
-.mySlide img {
+.mySlide img, .mySlide video {
     width: auto;
     height: 80vh;
-    object-fit: cover;
-    /* object-position: 0 20%; */
 }
 
+.lightbox-media {
+    border-radius: 0;
+}
+
+.lightbox-media__title {
+    display: flex;
+    align-self: flex-start;
+}
 
 /* ------------------------------ FORMULAIRE CONTACT ------------------------------ */
 

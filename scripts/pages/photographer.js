@@ -122,18 +122,103 @@ export async function initEventListenerLikes(){
 // Affiche lightbox
 function displayLightbox() {
     document.querySelector("#lightbox").style.display = "block";
+    document.querySelector('.lightbox-media').innerHTML = "";
 }
 
 // Ferme lightbox
 function initCloseButton() {
     document.querySelector('.close').addEventListener("click", () => {
         document.getElementById("lightbox").style.display = "none";
+        document.querySelector('.lightbox-media').innerHTML = "";
     })
 }  
   
 
+function initLightboxButtons(currentIndex, medias) {
+    // Bouton précédent
+    document.querySelector('.prev').addEventListener('click', () => {
+        if (currentIndex != 0) {
+            currentIndex = currentIndex - 1;
+        } else {
+            currentIndex = medias.length - 2; // Affiche la dernière image après la première
+        }
+
+        let isImg = medias[currentIndex].classList.contains('photographer_gallery--element__img');
+        let isVideo = medias[currentIndex].classList.contains('photographer_gallery--element__video');
+        const lightboxMedia = document.querySelector('.lightbox-media');
+        lightboxMedia.innerHTML = "";
+
+        if (isImg) { 
+            let img = document.createElement( 'img' );
+            let imgUrl = medias[currentIndex].src;
+            img.setAttribute("src", imgUrl);
+            img.alt = medias[currentIndex].title;
+            img.classList.add('photographer_gallery--element__img', 'photographer_gallery--element__media');
+            lightboxMedia.appendChild(img);
+
+            let title = document.querySelector('.lightbox-media__title')
+            title.innerHTML = medias[currentIndex].alt; 
+        } 
+        
+        else if (isVideo) {           
+            let video = document.createElement('video');
+            video.classList.add("photographer_gallery--element__video", "photographer_gallery--element__media");
+            let source = document.createElement('source');
+            let videoUrl = medias[currentIndex].firstChild.src;
+            source.setAttribute('src', videoUrl);
+            source.setAttribute('type', "video/mp4");
+            video.appendChild(source);
+            lightboxMedia.appendChild(video);
+
+            let title = document.querySelector('.lightbox-media__title')
+            title.innerHTML = medias[currentIndex].title; 
+        }
+    })
+
+    // Bouton suivant
+    document.querySelector('.next').addEventListener("click", () => {
+        if (currentIndex !=  medias.length - 2) {
+            currentIndex = currentIndex + 1;
+        } else {
+            currentIndex = 0; // Affiche la première image après la dernière
+        }
+
+        let isImg = medias[currentIndex].classList.contains('photographer_gallery--element__img');
+        let isVideo = medias[currentIndex].classList.contains('photographer_gallery--element__video');
+        const lightboxMedia = document.querySelector('.lightbox-media');
+        lightboxMedia.innerHTML = "";
+
+        if (isImg) { 
+            let img = document.createElement( 'img' );
+            let imgUrl = medias[currentIndex].src;
+            img.setAttribute("src", imgUrl);
+            img.alt = medias[currentIndex].title;
+            img.classList.add('photographer_gallery--element__img', 'photographer_gallery--element__media');
+            lightboxMedia.appendChild(img);
+
+            let title = document.querySelector('.lightbox-media__title')
+            title.innerHTML = medias[currentIndex].alt; 
+        } 
+        
+        else if (isVideo) {           
+            let video = document.createElement('video');
+            video.classList.add("photographer_gallery--element__video", "photographer_gallery--element__media");
+            video.title = medias[currentIndex].title;
+            let source = document.createElement('source');
+            let videoUrl = medias[currentIndex].firstChild.src;
+            source.setAttribute('src', videoUrl);
+            source.setAttribute('type', "video/mp4");
+            video.appendChild(source);
+            lightboxMedia.appendChild(video);
+
+            let title = document.querySelector('.lightbox-media__title')
+            title.innerHTML = medias[currentIndex].title;
+        }
+    });
+}
+
 export async function initEventListenerLightbox(){
-    let medias = document.getElementsByClassName("photographer_gallery--element__img");
+    let medias = document.getElementsByClassName("photographer_gallery--element__media");
 
     initCloseButton();
 
@@ -145,32 +230,36 @@ export async function initEventListenerLightbox(){
             displayLightbox();
 
             // Mets à jour HTML pour image selectionnée
-            document.querySelector('.lighbox-img').src = element.src;  
-            document.querySelector('.lightbox-img__title').innerHTML = element.alt;  
+            const lightboxMedia = document.querySelector('.lightbox-media');
 
-            // Bouton précédent
-            document.querySelector('.prev').addEventListener("click", () => {
-                if (currentIndex != 0) {
-                    currentIndex = currentIndex - 1;
-                } else {
-                    currentIndex = medias.length - 1; // Affiche la dernière image après la première
-                }
-                document.querySelector('.lighbox-img').src = medias[currentIndex].src;
-                document.querySelector('.lightbox-img__title').innerHTML = medias[currentIndex].alt;  
+            if (element.classList.contains('photographer_gallery--element__img')){
+                const img = document.createElement('img');
+                img.classList.add('lighbox-img');
+                img.setAttribute('src', element.src);
+                img.alt = element.alt
 
-            })
+                let title = document.querySelector('.lightbox-media__title')
+                title.innerHTML = element.alt; 
 
-            // Bouton suivant
-            document.querySelector('.next').addEventListener("click", () => {
-                if (currentIndex !=  medias.length - 1) {
-                    currentIndex = currentIndex + 1;
-                } else {
-                    currentIndex = 0; // Affiche la première image après la dernière
-                }
-                document.querySelector('.lighbox-img').src = medias[currentIndex].src;
-                document.querySelector('.lightbox-img__title').innerHTML = medias[currentIndex].alt;  
+                lightboxMedia.appendChild(img);
+            }
+            else if (element.classList.contains('photographer_gallery--element__video')){                
+                let video = document.createElement('video');
+                let source = document.createElement('source');
+                let videoUrl = element.firstChild.src;
+                video.title = element.title;
+                source.setAttribute('src', videoUrl);
+                source.setAttribute('type', 'video/mp4');
+                video.setAttribute('controls', true);
+                video.classList.add('lighbox-video');
+                video.appendChild(source);
+                lightboxMedia.appendChild(video);
 
-            });
+                let title = document.querySelector('.lightbox-media__title')
+                title.innerHTML = element.title; 
+            }
+
+            initLightboxButtons(currentIndex, medias);
         })
     })
 }
