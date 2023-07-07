@@ -285,12 +285,10 @@ h2 {
 
 .mySlide img, .mySlide video {
     width: auto;
+    max-width: 80vw;
     height: 80vh;
-}
-
-.lightbox-media {
     border-radius: 0;
-}
+}    
 
 .lightbox-media__title {
     display: flex;
