@@ -105,6 +105,14 @@ async function initEventListenerFilter(){
         }       
     })
 
+    document.querySelector("#chevronSelected").addEventListener("click", () => {
+        Array.prototype.forEach.call(document.getElementsByClassName("filter-btn"), function(element) {
+            element.classList.add('hidden');
+        })
+        document.querySelector('#dropbtn').classList.remove('hidden');
+        dropOpen = false;
+    })
+
     Array.prototype.forEach.call(document.getElementsByClassName("filter-btn"), function(element, index) {
         element.addEventListener("click",() => { 
 
