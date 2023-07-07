@@ -82,14 +82,32 @@ async function filterMedias(filter) {
 async function initEventListenerFilter(){
     var filterSelected = 4; // 4 = aucun filtre selectionné
     let previousFilter = "";
+    var dropOpen = false;
     const params = (new URL(document.location)).searchParams;
     const id = params.get('id'); 
     const data = await getJson();
     const medias = await photographerMedia(data, id);
     const infos = await photographerInfo(data, id);
-    
+
+    document.querySelector("#dropbtn").addEventListener('click', () => {
+        if (!dropOpen) {
+            Array.prototype.forEach.call(document.getElementsByClassName("filter-btn"), function(element) {
+                element.classList.remove('hidden');
+            })
+            document.querySelector('#dropbtn').classList.add("hidden");
+            dropOpen = true;
+        } else {
+            Array.prototype.forEach.call(document.getElementsByClassName("filter-btn"), function(element) {
+                element.classList.add('hidden');
+            })
+            document.querySelector('#dropbtn').classList.remove('hidden');
+            dropOpen = false;
+        }       
+    })
+
     Array.prototype.forEach.call(document.getElementsByClassName("filter-btn"), function(element, index) {
         element.addEventListener("click",() => { 
+
             if (filterSelected !== index) {
                 if (previousFilter !== "") {
                     previousFilter.classList.remove('photograph-gallery--filter__selected');
@@ -103,6 +121,11 @@ async function initEventListenerFilter(){
                 element.classList.remove('photograph-gallery--filter__selected');
                 displayGallery(infos, medias);
                 filterSelected = 4;
+                Array.prototype.forEach.call(document.getElementsByClassName("filter-btn"), function(element) {
+                    element.classList.add('hidden');
+                })
+                document.querySelector('#dropbtn').classList.remove('hidden');
+                dropOpen = false;
             }
 
             previousFilter = element;

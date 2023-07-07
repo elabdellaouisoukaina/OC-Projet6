@@ -20,11 +20,12 @@
 
       <div class="photograph-gallery--filter">
         <p>Filtrer par</p>
-        <div>
-          <button class="btn active filter-btn">Popularité</button>
-          <button class="btn filter-btn">Date</button>
-          <button class="btn filter-btn">Titre</button>
-        </div>
+        <div class="dropdown-content">
+          <button id="dropbtn" aria-label="Ouvrir les filtres" role="button" aria-haspopup=”listbox” aria-expanded><i class="fa-solid fa-chevron-down"></i></button>
+          <button class="btn filter-btn hidden" role="listbox">Popularité <i class="fa-solid fa-chevron-down"></i></button>
+          <button class="btn filter-btn hidden" role="listbox">Date</button>
+          <button class="btn filter-btn hidden" role="listbox">Titre</button>
+        </div>        
       </div>
       <div class="photograph-gallery"></div>
       <div class="photograph-price"></div>

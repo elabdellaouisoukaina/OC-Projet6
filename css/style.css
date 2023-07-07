@@ -37,6 +37,10 @@ h2 {
     margin: 0;
 }
 
+main {
+    position: relative;
+}
+
 /* ________________________________________ PAGE ACCUEIL ________________________________________ */
 
 .logo {
@@ -164,12 +168,12 @@ h2 {
 }
 
 
-/* ------------------------------ GALERIE ------------------------------ */
+/* ------------------------------ DROPDOWN ------------------------------ */
 
 .photograph-gallery--filter {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    margin-top: 16px;
 }
 
 .photograph-gallery--filter__selected {
@@ -177,12 +181,42 @@ h2 {
     color: white;
 }
 
+.dropdown-content {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    margin-top: 16px;
+    margin-left: 10px;
+    z-index: 9;
+}
+
+.btn {
+    width : 100px;
+    height: 30px;
+    border: 0px;
+}
+
+.hidden {
+    display: none;
+}
+
+#dropbtn {
+    border: 0;
+    background-color: #fff;
+    padding: 0;
+    margin-top: 4px;
+}
+
+/* ------------------------------ GALERIE ------------------------------ */
+
 .photograph-gallery {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap : 20px;
     margin-top: 30px;
-    position: relative;
+    position: absolute;
+    top: 360px;
+    left: 0;
 }
 
 .photographer_gallery--element__img, .photographer_gallery--element__infos, .photographer_gallery--element__video {
