@@ -91,10 +91,10 @@
       </div>
 
     <!-- The Modal/Lightbox -->
-    <div id="lightbox">
-      <i class="fa-solid fa-xmark fa-2xl close"></i>
+    <div id="lightbox" role="dialog" aria-hidden="true" tabindex="0">
+      <i class="fa-solid fa-xmark fa-2xl close" id="closeLightbox" tabindex="0" role="button" aria-label="Fermer le carrousel"></i>
       <div class="modal-content">
-        <i class="fa-solid fa-chevron-left fa-2xl prev"></i>
+        <i class="fa-solid fa-chevron-left fa-2xl prev" tabindex="0" aria-label="Média précédent" role="button"></i>
 
         <div class="mySlide">
 
@@ -102,7 +102,7 @@
           <p class="lightbox-media__title"></p>
         </div>
         
-        <i class="fa-solid fa-chevron-right fa-2xl next"></i>
+        <i class="fa-solid fa-chevron-right fa-2xl next" tabindex="0" aria-label="Média suivant" role="button"></i>
 
       </div>
     </div>

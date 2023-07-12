@@ -8,6 +8,21 @@ export function mediasFactory(data) {
         document.querySelector('.close').addEventListener("click", () => {
             document.getElementById("lightbox").style.display = "none";
             document.querySelector('.lightbox-media').innerHTML = "";
+
+            // Accessibilité
+            const body = document.querySelector('#body');
+            const main = document.querySelector('#main');
+            const header = document.querySelector('#header');
+            const lightbox =  document.querySelector('#lightbox');
+            const dropbtn = document.querySelector('#dropbtn');
+            const homeLink = document.querySelector('#homeLink');
+            
+            main.ariaHidden = 'false';
+            header.ariaHidden = 'false';
+            dropbtn.tabIndex = '0';
+            homeLink.tabIndex = '0';
+            lightbox.ariaHidden = 'true';
+            body.classList.remove('no-scroll')
         })
     }
 
@@ -15,9 +30,54 @@ export function mediasFactory(data) {
     function displayLightbox() {
         document.querySelector("#lightbox").style.display = "block";
         document.querySelector('.lightbox-media').innerHTML = "";
+
+        // Accessibilité
+        const body = document.querySelector('#body');
+        const main = document.querySelector('#main');
+        const header = document.querySelector('#header');
+        const lightbox =  document.querySelector('#lightbox');
+        const closeLightbox = document.querySelector('#closeLightbox');
+        const dropbtn = document.querySelector('#dropbtn');
+        const homeLink = document.querySelector('#homeLink');
+            
+        body.classList.add('no-scroll')
+        main.ariaHidden = 'true';
+        header.ariaHidden = 'true';
+        dropbtn.tabIndex = '-1';
+        homeLink.tabIndex = '-1';
+        lightbox.ariaHidden = 'false';
+        closeLightbox.focus();
     }
 
     function initLightboxButtons(currentIndex, medias) {
+        
+        // Accessibilté : possibilité de fermer modal avec touche échap
+        const lightbox =  document.querySelector('#lightbox');
+
+        lightbox.addEventListener("keydown", e => {
+            const keyCode = e.keyCode ? e.keyCode : e.which
+            const lightbox =  document.querySelector('#lightbox');
+
+            if (lightbox.ariaHidden == 'false' && keyCode === 27) {
+                document.getElementById("lightbox").style.display = "none";
+                document.querySelector('.lightbox-media').innerHTML = "";
+    
+                const body = document.querySelector('#body');
+                const main = document.querySelector('#main');
+                const header = document.querySelector('#header');
+                const lightbox =  document.querySelector('#lightbox');
+                const dropbtn = document.querySelector('#dropbtn');
+                const homeLink = document.querySelector('#homeLink');
+                
+                main.ariaHidden = 'false';
+                header.ariaHidden = 'false';
+                dropbtn.tabIndex = '0';
+                homeLink.tabIndex = '0';
+                lightbox.ariaHidden = 'true';
+                body.classList.remove('no-scroll');
+            }
+        })
+
         // Bouton précédent
         document.querySelector('.prev').addEventListener('click', () => {
             if (currentIndex != 0) {
@@ -35,12 +95,12 @@ export function mediasFactory(data) {
                 let img = document.createElement( 'img' );
                 let imgUrl = medias[currentIndex].src;
                 img.setAttribute("src", imgUrl);
-                img.alt = medias[currentIndex].title;
+                img.alt = medias[currentIndex].alt.substr(42);
                 img.classList.add('photographer_gallery--element__img', 'photographer_gallery--element__media');
                 lightboxMedia.appendChild(img);
     
                 let title = document.querySelector('.lightbox-media__title')
-                title.innerHTML = medias[currentIndex].alt; 
+                title.innerHTML = medias[currentIndex].alt.substr(42); 
             } 
             
             else if (isVideo) {           
@@ -76,12 +136,12 @@ export function mediasFactory(data) {
                 let img = document.createElement( 'img' );
                 let imgUrl = medias[currentIndex].src;
                 img.setAttribute("src", imgUrl);
-                img.alt = medias[currentIndex].title;
+                img.alt = medias[currentIndex].alt.substr(42);
                 img.classList.add('photographer_gallery--element__img', 'photographer_gallery--element__media');
                 lightboxMedia.appendChild(img);
     
                 let title = document.querySelector('.lightbox-media__title')
-                title.innerHTML = medias[currentIndex].alt; 
+                title.innerHTML = medias[currentIndex].alt.substr(42); 
             } 
             
             else if (isVideo) {           
@@ -121,10 +181,10 @@ export function mediasFactory(data) {
                     const img = document.createElement('img');
                     img.classList.add('lighbox-img');
                     img.setAttribute('src', element.src);
-                    img.alt = element.alt
+                    img.alt = element.alt.substr(42); // Récupère le titre du média à la fin du alt
     
                     let title = document.querySelector('.lightbox-media__title')
-                    title.innerHTML = element.alt; 
+                    title.innerHTML = element.alt.substr(42); 
     
                     lightboxMedia.appendChild(img);
                 }
