@@ -29,7 +29,7 @@ h1 {
     margin: 0;
 }
 
-h2 {
+h2, .photographer-page--h1 {
     color: #D3573C;
     font-family: DM Sans;
     font-size: 64px;

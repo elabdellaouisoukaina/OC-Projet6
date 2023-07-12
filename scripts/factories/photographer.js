@@ -45,8 +45,9 @@ export function photographerFactory(data) {
     function getHeaderInfos() {
         const photographerInfos = document.createElement( 'div' );
 
-        const nameElement = document.createElement( 'h2' );
+        const nameElement = document.createElement( 'h1' );
         nameElement.textContent = name;
+        nameElement.classList.add('photographer-page--h1');
 
         const locationElement = document.createElement('p');
         locationElement.textContent = city + ', ' + country;
