@@ -165,6 +165,7 @@ export async function initContactForm() {
         
             // Affiche message de confirmation d'envoi du formulaire
             document.querySelector(".contact-form--form-sent").style.display = "flex";
+            document.querySelector("#validationClose").focus();
         } else {
             // Supprime message de confirmation lorsqu'envoi d'un deuxième formulaire à la suite mais invalide
             document.querySelector(".contact-form--form-sent").style.display = "none";  
