@@ -5,6 +5,24 @@ function displayModal() {
     document.querySelector(".contact-modal").style.display = "block";
     document.querySelector(".contact-form--title").style.display =  "flex";
     document.querySelector("#closeForm").style.display =  "flex";
+
+    
+    // Accessibilité
+    const body = document.querySelector('#body');
+    const main = document.querySelector('#main');
+    const header = document.querySelector('#header');
+    const contactModal =  document.querySelector('.contact-modal');
+    const closeForm = document.querySelector('#closeForm');
+    const dropbtn = document.querySelector('#dropbtn');
+    const homeLink = document.querySelector('#homeLink');
+        
+    body.classList.add('no-scroll')
+    main.ariaHidden = 'true';
+    header.ariaHidden = 'true';
+    dropbtn.tabIndex = '-1';
+    homeLink.tabIndex = '-1';
+    contactModal.ariaHidden = 'false';
+    closeForm.focus();
 }
 
 // Ferme la modale au click sur la X
@@ -17,7 +35,23 @@ function closeModal() {
     Array.prototype.forEach.call(document.getElementsByClassName("errorMessage"), function(element) {
         element.style.display = "none";
     })
+
+    // Accessibilité
+    const body = document.querySelector('#body');
+    const main = document.querySelector('#main');
+    const header = document.querySelector('#header');
+    const contactModal =  document.querySelector('.contact-modal');
+    const contactButton = document.querySelector('#contactButton');
+    const dropbtn = document.querySelector('#dropbtn');
+    const homeLink = document.querySelector('#homeLink');
     
+    main.ariaHidden = 'false';
+    header.ariaHidden = 'false';
+    dropbtn.tabIndex = '0';
+    homeLink.tabIndex = '0';
+    contactModal.ariaHidden = 'true';
+    contactButton.focus();
+    body.classList.remove('no-scroll')
 }
 
 // Valide le champs Prénom : retourne true si minimum 2 caractères / n'est pas vide
@@ -89,6 +123,7 @@ function validateAll(){
 
 // Validation finale du formulaire
 export async function initContactForm() {
+    
     document.querySelector(".contact_button").addEventListener("click", () => {
         displayModal();
     })
@@ -97,6 +132,18 @@ export async function initContactForm() {
         element.addEventListener("click", () => { 
             closeModal();
         })
+    })
+
+    // Accessibilté : possibilité de fermer modal avec touche échap
+    const contactModal =  document.querySelector('.contact-modal');
+
+    contactModal.addEventListener("keydown", e => {
+        const keyCode = e.keyCode ? e.keyCode : e.which
+        const contactModal =  document.querySelector('.contact-modal');
+
+        if (contactModal.ariaHidden == 'false' && keyCode === 27) {
+            closeModal()
+        }
     })
 
     const params = (new URL(document.location)).searchParams;

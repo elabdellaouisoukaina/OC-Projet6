@@ -6,6 +6,9 @@ body {
     padding: 25px 100px;
 }
 
+.no-scroll {
+    overflow: hidden;
+}
 
 header {
     display: flex;
@@ -311,6 +314,10 @@ main {
     position: absolute;
     top: 0;
     right: 0;
+}
+
+.modal {
+    display: none;
 }
 
 .modal-content {
