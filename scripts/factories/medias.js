@@ -214,6 +214,8 @@ export function mediasFactory(data) {
             element.addEventListener("click",() => { 
                 element.previousSibling.innerHTML =  parseInt(element.previousSibling.innerHTML) + 1;
                 document.querySelector('.photograph-price div p').innerHTML = parseInt(document.querySelector('.photograph-price div p').innerHTML) + 1;
+                document.querySelector('#heartIcon').ariaLabel = document.querySelector('.photograph-price div p').innerHTML + " likes";
+                element.ariaLabel = element.previousSibling.innerHTML + " likes, votre like est compté";
             }, {once : true});
         })
     }  
@@ -233,8 +235,10 @@ export function mediasFactory(data) {
                 let img = document.createElement( 'img' );
                 let imgUrl = `assets/images/${name}/${medias[i].image}`;
                 img.setAttribute("src", imgUrl);
-                img.alt = medias[i].title;
+                img.role = "button"
+                img.alt = "Clicker pour ouvrir le carrousel, image : " + medias[i].title;
                 img.classList.add('photographer_gallery--element__img', 'photographer_gallery--element__media');
+                img.tabIndex = "0";
                 post.appendChild(img);
             }
 
@@ -243,6 +247,8 @@ export function mediasFactory(data) {
                 let video = document.createElement('video');
                 video.classList.add("photographer_gallery--element__video", "photographer_gallery--element__media");
                 video.title = medias[i].title;
+                video.ariaLabel = "Clicker pour ouvrir le carrousel, vidéo : " + medias[i].title;
+                video.tabIndex = "0";
                 let source = document.createElement('source');
                 let videoUrl = `assets/images/${name}/${medias[i].video}`;
                 source.setAttribute('src', videoUrl);
@@ -263,11 +269,15 @@ export function mediasFactory(data) {
             let likes = document.createElement( 'p' );
             likes.classList.add('number-likes');
             likes.textContent = medias[i].likes;
+            likes.ariaHidden = "true";
+            likesDiv.tabIndex = "0";
             likesDiv.appendChild(likes);
 
             let heartIcon = document.createElement('i');
             heartIcon.classList.add('fa-solid', 'fa-heart','likable');
-            heartIcon.ariaLabel = medias[i].likes;
+            heartIcon.ariaLabel = likes.innerHTML + " likes, cliquer pour ajouter un like";
+            heartIcon.role = "button";
+
             likesDiv.appendChild(heartIcon);
 
             divInfos.appendChild(likesDiv);
@@ -284,12 +294,14 @@ export function mediasFactory(data) {
         if (divRightBottom.innerHTML === "") {  
             let totalLikesDiv = document.createElement( 'div' );
             let totalLikesP = document.createElement( 'p' );
+            totalLikesP.ariaHidden = "true";
             totalLikesP.textContent = totalLikes;
             totalLikesDiv.appendChild(totalLikesP);
     
             let heartIcon = document.createElement('i');
+            heartIcon.id = "heartIcon"
             heartIcon.classList.add('fa-solid', 'fa-heart');
-            heartIcon.ariaLabel = totalLikes;
+            heartIcon.ariaLabel = totalLikesP.innerHTML + " likes"
             totalLikesDiv.appendChild(heartIcon);
     
             divRightBottom.appendChild(totalLikesDiv);
