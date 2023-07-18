@@ -10,19 +10,19 @@
   <body id="body">
     <header id="header">
       <a id="homeLink" href="http://127.0.0.1:5500/index.html">
-        <img src="assets/images/logo.png" class="logo" alt="FishEye - Aller à la page d’accueil"/>
+        <img src="assets/images/logo.png" class="logo" alt="FishEye Home page"/>
       </a>
     </header>
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" id="contactButton">Contactez-moi</button>
+        <button class="contact_button" id="contactButton" aria-label="Contact Me">Contactez-moi</button>
       </div>
 
       <div class="photograph-gallery--filter">
         <p>Filtrer par</p>
         <div class="dropdown-content">
-          <button id="dropbtn" aria-label="Ouvrir les filtres" role="button" aria-haspopup=”listbox” aria-expanded><i class="fa-solid fa-chevron-down"></i></button>
-          <button id="drop1" class="btn filter-btn hidden" role="listbox">Popularité <i role="button" class="fa-solid fa-chevron-up" id="chevronSelected" aria-label="Fermer la liste de tri"></i></button>
+          <button id="dropbtn" aria-label="Order by" role="button" aria-haspopup=”listbox” aria-expanded><span class="fa-solid fa-chevron-down"></span></button>
+          <button id="drop1" class="btn filter-btn hidden" role="listbox">Popularité <span role="button" class="fa-solid fa-chevron-up" id="chevronSelected" aria-label="Fermer la liste de tri"></span></button>
           <button class="btn filter-btn hidden" role="listbox">Date</button>
           <button id="drop3"class="btn filter-btn hidden" role="listbox">Titre</button>
         </div>        
@@ -32,48 +32,48 @@
     </main>
 
     
-    <div class="contact-modal" role="dialog" aria-labelledby="modal-title" aria-describedby="contactForm" aria-hidden="true" tabindex="0">
+    <div class="contact-modal" role="dialog" aria-hidden="true" tabindex="0" aria-labelledby="modal-title">
         <div class="content">
           <div class="modal-body">
 
             <div class="contact-form--form-sent">
-              <img src="assets/icons/close.svg" class="contact-form--close-button" aria-label="Fermer la modale" tabindex="0" role="button" id="validationClose"/>
+              <img src="assets/icons/close.svg" class="contact-form--close-button" alt="Close Contact form" tabindex="0" role="button" id="validationClose"/>
               <p class="messageSent">Merci ! Votre message a bien été envoyé.</p>
             </div>
 
             <header>
-              <img src="assets/icons/close.svg" class="contact-form--close-button" id="closeForm" aria-label="Fermer la modale" tabindex="0"/>
+              <img src="assets/icons/close.svg" class="contact-form--close-button" id="closeForm" alt="Close Contact form" tabindex="0"/>
               <div class="contact-form--title" id="modal-title"></div>
             </header>
 
             <form id="contactForm" name="reserve">
               <div class="formData">
-                <label for="first">Prénom</label>
-                <input class="text-control" type="text" id="first" name="first"/>
+                <label for="first" id="firstLabel">Prénom</label>
+                <input class="text-control" type="text" id="first" name="first" aria-labelledby="firstLabel"/>
                 <p id="firstError" class="errorMessage">
                   Veuillez entrer 2 caractères ou plus pour le champ du prénom.
                 </p>
               </div>
 
               <div class="formData">
-                <label for="last">Nom</label>
-                <input class="text-control" type="text" id="last" name="last"/>
+                <label for="last" id="lastLabel">Nom</label>
+                <input class="text-control" type="text" id="last" name="last" aria-labelledby="lastLabel"/>
                 <p id="lastError" class="errorMessage">
                   Veuillez entrer 2 caractères ou plus pour le champ du nom.
                 </p>
               </div> 
 
               <div class="formData">
-                <label for="email">E-mail</label>
-                <input class="text-control" type="text" id="email" name="email"/>
+                <label for="email" id="emailLabel">E-mail</label>
+                <input class="text-control" type="text" id="email" name="email" aria-labelledby="emailLabel"/>
                 <p id="emailError" class="errorMessage">
                   Veuillez entrer un e-mail valide.
                 </p>
               </div>
 
               <div class="formData">
-                <label for="message">Votre message</label>
-                <textarea class="text-control textarea" id="message" name="message" rows="5" cols="33"></textarea>
+                <label for="message" id="messageLabel">Votre message</label>
+                <textarea class="text-control textarea" id="message" name="message" rows="5" cols="33" aria-labelledby="messageLabel"></textarea>
                 <p id="messageError" class="errorMessage">
                   Votre message ne peut être vide.
                 </p>
@@ -84,6 +84,7 @@
                 type="submit"
                 class="button"
                 value="Envoyer"
+                aria-label="Send"
               />
             </form>
           </div>
@@ -91,10 +92,10 @@
       </div>
 
     <!-- The Modal/Lightbox -->
-    <div id="lightbox" role="dialog" aria-hidden="true" tabindex="0">
-      <i class="fa-solid fa-xmark fa-2xl close" id="closeLightbox" tabindex="0" role="button" aria-label="Fermer le carrousel"></i>
+    <div id="lightbox" role="dialog" aria-hidden="true" tabindex="0" aria-label="Media closeup view">
+      <span class="fa-solid fa-xmark fa-2xl close" id="closeLightbox" tabindex="0" role="button" aria-label="Close dialog"></span>
       <div class="modal-content">
-        <i class="fa-solid fa-chevron-left fa-2xl prev" tabindex="0" aria-label="Média précédent" role="button"></i>
+        <span class="fa-solid fa-chevron-left fa-2xl prev" tabindex="0" aria-label="Previous media" role="button"></span>
 
         <div class="mySlide">
 
@@ -102,7 +103,7 @@
           <p class="lightbox-media__title"></p>
         </div>
         
-        <i class="fa-solid fa-chevron-right fa-2xl next" tabindex="0" aria-label="Média suivant" role="button"></i>
+        <span class="fa-solid fa-chevron-right fa-2xl next" tabindex="0" aria-label="Next media" role="button"></span>
 
       </div>
     </div>

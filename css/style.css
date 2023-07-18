@@ -166,6 +166,11 @@ main {
     top: 137px;
 }
 
+.contact_button:hover, .contact_button:focus {
+    background-color: #DB8876;
+    color: black;
+}
+
 .photograph-header--div-img {
     justify-content: flex-end;
 }
@@ -454,4 +459,10 @@ main {
     width: 25%;
     text-align: center;
     margin-top: 15px;
+}
+
+.btn-submit:hover, .btn-submit:focus {
+    background-color: #DB8876;
+    color: black;
+    border: 2px solid white;
 }

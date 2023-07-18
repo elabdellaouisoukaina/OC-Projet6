@@ -259,10 +259,10 @@ export async function initEventListenerLightbox(){
                 const img = document.createElement('img');
                 img.classList.add('lighbox-img');
                 img.setAttribute('src', element.src);
-                img.alt = element.alt.substr(42); // Récupère le titre du média à la fin du alt
+                img.alt = element.alt.substr(14); // Récupère le titre du média à la fin du alt
 
                 let title = document.querySelector('.lightbox-media__title')
-                title.innerHTML = element.alt.substr(42); 
+                title.innerHTML = element.alt.substr(14); 
 
                 lightboxMedia.appendChild(img);
             }

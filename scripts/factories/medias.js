@@ -29,7 +29,7 @@ export function mediasFactory(data) {
                 let imgUrl = `assets/images/${name}/${medias[i].image}`;
                 img.setAttribute("src", imgUrl);
                 img.role = "button"
-                img.alt = "Clicker pour ouvrir le carrousel, image : " + medias[i].title;
+                img.alt = "Closeup view, " + medias[i].title;
                 img.classList.add('photographer_gallery--element__img', 'photographer_gallery--element__media');
                 img.tabIndex = "0";
                 post.appendChild(img);
