@@ -34,9 +34,9 @@ async function filterMedias(filter) {
 }
 
 export async function initEventListenerFilter(){
-    var filterSelected = 4; // 4 = aucun filtre selectionné
+    let filterSelected = 4; // 4 = aucun filtre selectionné
     let previousFilter = "";
-    var dropOpen = false;
+    let dropOpen = false;
     const params = (new URL(document.location)).searchParams;
     const id = params.get('id'); 
     const data = await getJson();

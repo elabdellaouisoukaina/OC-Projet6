@@ -1,4 +1,3 @@
-// import { setCurrentMedias } from "../state/state.js";
 import { initEventListenerLightbox } from "../utils/lightbox.js";
 
 export function mediasFactory(data) {
