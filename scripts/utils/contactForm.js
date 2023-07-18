@@ -41,7 +41,6 @@ function closeModal() {
     const main = document.querySelector('#main');
     const header = document.querySelector('#header');
     const contactModal =  document.querySelector('.contact-modal');
-    const contactButton = document.querySelector('#contactButton');
     const dropbtn = document.querySelector('#dropbtn');
     const homeLink = document.querySelector('#homeLink');
     
@@ -50,18 +49,20 @@ function closeModal() {
     dropbtn.tabIndex = '0';
     homeLink.tabIndex = '0';
     contactModal.ariaHidden = 'true';
-    contactButton.focus();
-    body.classList.remove('no-scroll')
+    body.classList.remove('no-scroll');
 }
 
 // Valide le champs Prénom : retourne true si minimum 2 caractères / n'est pas vide
 function firstValid(first){ 
     // Validation champs prénom et affichage du message d'erreur si saisie incorrecte
     if (first.length >= 2) { // Saisie prénom minimum deux caractères, n'est pas vide
-        document.getElementById("firstError").style.display = "none";
+        document.getElementById("firstError").style.display = "none"
+        document.getElementById("first").ariaInvalid = "false";
+
         return true;
     } else { // Affichage du message d'erreur si saisie incorrecte
         document.getElementById("firstError").style.display = "block";
+        document.getElementById("first").ariaInvalid = "true";
         return false;
     }
 }
@@ -131,6 +132,8 @@ export async function initContactForm() {
     Array.prototype.forEach.call(document.getElementsByClassName("contact-form--close-button"), function(element) {
         element.addEventListener("click", () => { 
             closeModal();
+            const contactButton = document.querySelector('#contactButton');
+            contactButton.focus();
         })
     })
 
@@ -142,7 +145,9 @@ export async function initContactForm() {
         const contactModal =  document.querySelector('.contact-modal');
 
         if (contactModal.ariaHidden == 'false' && keyCode === 27) {
-            closeModal()
+            closeModal();
+            const contactButton = document.querySelector('#contactButton');
+            contactButton.focus();
         }
     })
 
