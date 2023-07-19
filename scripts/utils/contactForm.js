@@ -71,9 +71,12 @@ function firstValid(first){
 function lastValid(last){
     if (last.length >= 2) {
         document.getElementById("lastError").style.display = "none";
+        document.getElementById("last").ariaInvalid = "false";
+
         return true;
     } else { // Affichage du message d'erreur si saisie incorrecte
         document.getElementById("lastError").style.display = "block";
+        document.getElementById("last").ariaInvalid = "true";
         return false;
   
     }
@@ -85,9 +88,11 @@ function emailValid(email){
   
     if (emailMatchPattern !== null) { // emailMatchPattern = null lorsque la saisie ne respecte pas le pattern
         document.getElementById("emailError").style.display = "none";
+        document.getElementById("email").ariaInvalid = "false";
         return true;
     } else { // Affichage du message d'erreur si saisie incorrecte
         document.getElementById("emailError").style.display = "block";
+        document.getElementById("email").ariaInvalid = "true";
         return false;
     }
 }
@@ -97,9 +102,11 @@ function messageValid(message){
     // Validation champs prénom et affichage du message d'erreur si saisie incorrecte
     if (message.length > 0) { // Saisie prénom minimum deux caractères, n'est pas vide
         document.getElementById("messageError").style.display = "none";
+        document.getElementById("message").ariaInvalid = "false";
         return true;
     } else { // Affichage du message d'erreur si saisie incorrecte
         document.getElementById("messageError").style.display = "block";
+        document.getElementById("message").ariaInvalid = "true";
         return false;
     }
 }

@@ -1,5 +1,5 @@
 // Ferme lightbox
-function initCloseButton() {
+function initCloseButton(medias, currentIndex) {
     document.querySelector('.close').addEventListener("click", () => {
         document.getElementById("lightbox").style.display = "none";
         document.querySelector('.lightbox-media').innerHTML = "";
@@ -17,7 +17,9 @@ function initCloseButton() {
         dropbtn.tabIndex = '0';
         homeLink.tabIndex = '0';
         lightbox.ariaHidden = 'true';
-        body.classList.remove('no-scroll')
+        body.classList.remove('no-scroll');
+
+        medias[currentIndex].focus();
     })
 }
 
@@ -70,6 +72,8 @@ function initLightboxButtons(currentIndex, medias) {
             homeLink.tabIndex = '0';
             lightbox.ariaHidden = 'true';
             body.classList.remove('no-scroll');
+
+            medias[currentIndex].focus();
         }
 
         // Précédent avec flèche de gauche 
@@ -243,14 +247,18 @@ function initLightboxButtons(currentIndex, medias) {
 export async function initEventListenerLightbox(){
     let medias = document.getElementsByClassName("photographer_gallery--element__media");
 
-    initCloseButton();
-
     Array.prototype.forEach.call(medias, function(element, index) {
         element.addEventListener("click", () => { 
             let currentIndex = index;
 
             // Affiche la lightbox
             displayLightbox();
+
+            // Fermer la lightbox 
+            initCloseButton(medias, currentIndex);
+
+            // Init boutons
+            initLightboxButtons(currentIndex, medias);
 
             // Mets à jour HTML pour image selectionnée
             const lightboxMedia = document.querySelector('.lightbox-media');
@@ -281,8 +289,9 @@ export async function initEventListenerLightbox(){
                 let title = document.querySelector('.lightbox-media__title')
                 title.innerHTML = element.title; 
             }
-
-            initLightboxButtons(currentIndex, medias);
         })
+
     })
+
+    
 }
