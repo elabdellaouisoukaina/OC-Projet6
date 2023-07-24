@@ -1,5 +1,5 @@
 // Ferme lightbox
-function initCloseButton(medias, currentIndex) {
+function initCloseButton(currentMedia) {
     document.querySelector('.close').addEventListener("click", () => {
         document.getElementById("lightbox").style.display = "none";
         document.querySelector('.lightbox-media').innerHTML = "";
@@ -19,7 +19,7 @@ function initCloseButton(medias, currentIndex) {
         lightbox.ariaHidden = 'true';
         body.classList.remove('no-scroll');
 
-        medias[currentIndex].focus();
+        currentMedia.focus();
     })
 }
 
@@ -46,16 +46,16 @@ function displayLightbox() {
     closeLightbox.focus();
 }
 
-function initLightboxButtons(currentIndex, medias) {
+function initLightboxButtons(currentIndex, medias, currentMedia) {
     // Navigation clavier
     const lightbox =  document.querySelector('#lightbox');
 
     lightbox.addEventListener("keydown", e => {
         const keyCode = e.keyCode ? e.keyCode : e.which
-        const lightbox =  document.querySelector('#lightbox');
+        // const lightbox =  document.querySelector('#lightbox');
         
         // Fermer avec échap
-        if (lightbox.ariaHidden == 'false' && keyCode === 27) {
+        if (keyCode === 27) {
             document.getElementById("lightbox").style.display = "none";
             document.querySelector('.lightbox-media').innerHTML = "";
 
@@ -73,7 +73,7 @@ function initLightboxButtons(currentIndex, medias) {
             lightbox.ariaHidden = 'true';
             body.classList.remove('no-scroll');
 
-            medias[currentIndex].focus();
+            currentMedia.focus();
         }
 
         // Précédent avec flèche de gauche 
@@ -249,16 +249,15 @@ export async function initEventListenerLightbox(){
 
     Array.prototype.forEach.call(medias, function(element, index) {
         element.addEventListener("click", () => { 
-            let currentIndex = index;
 
             // Affiche la lightbox
             displayLightbox();
 
             // Fermer la lightbox 
-            initCloseButton(medias, currentIndex);
+            initCloseButton(element);
 
             // Init boutons
-            initLightboxButtons(currentIndex, medias);
+            initLightboxButtons(index, medias, element);
 
             // Mets à jour HTML pour image selectionnée
             const lightboxMedia = document.querySelector('.lightbox-media');
