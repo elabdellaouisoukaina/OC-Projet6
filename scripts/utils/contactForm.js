@@ -125,6 +125,18 @@ function validateAll(){
 
     document.querySelector(".contact-modal").style.height = "875px";
     document.querySelector('.messageSent').style.margin = "50% 0";
+
+    // Accessibilité : focus dans premier champs faux
+    let inputs = document.getElementsByTagName("input");
+    let firstInvalidInput;
+    for (let i = 0; i < inputs.length; i++) {
+        if (inputs[i].ariaInvalid === "true") {
+            firstInvalidInput = inputs[i];
+            break;
+        } 
+    }
+    firstInvalidInput.focus();
+
     return false;
     
 }
