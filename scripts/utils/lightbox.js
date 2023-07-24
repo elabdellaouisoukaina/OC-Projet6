@@ -93,12 +93,12 @@ function initLightboxButtons(currentIndex, medias) {
                 let img = document.createElement( 'img' );
                 let imgUrl = medias[currentIndex].src;
                 img.setAttribute("src", imgUrl);
-                img.alt = medias[currentIndex].alt.substr(42);
+                img.alt = medias[currentIndex].alt.substr(14);
                 img.classList.add('photographer_gallery--element__img', 'photographer_gallery--element__media');
                 lightboxMedia.appendChild(img);
         
                 let title = document.querySelector('.lightbox-media__title')
-                title.innerHTML = medias[currentIndex].alt.substr(42); 
+                title.innerHTML = medias[currentIndex].alt.substr(14); 
             } 
             
             else if (isVideo) {           
@@ -134,12 +134,12 @@ function initLightboxButtons(currentIndex, medias) {
                 let img = document.createElement( 'img' );
                 let imgUrl = medias[currentIndex].src;
                 img.setAttribute("src", imgUrl);
-                img.alt = medias[currentIndex].alt.substr(42);
+                img.alt = medias[currentIndex].alt.substr(14);
                 img.classList.add('photographer_gallery--element__img', 'photographer_gallery--element__media');
                 lightboxMedia.appendChild(img);
         
                 let title = document.querySelector('.lightbox-media__title')
-                title.innerHTML = medias[currentIndex].alt.substr(42); 
+                title.innerHTML = medias[currentIndex].alt.substr(14); 
             } 
             
             else if (isVideo) {           
@@ -177,12 +177,12 @@ function initLightboxButtons(currentIndex, medias) {
             let img = document.createElement( 'img' );
             let imgUrl = medias[currentIndex].src;
             img.setAttribute("src", imgUrl);
-            img.alt = medias[currentIndex].alt.substr(42);
+            img.alt = medias[currentIndex].alt.substr(14);
             img.classList.add('photographer_gallery--element__img', 'photographer_gallery--element__media');
             lightboxMedia.appendChild(img);
 
             let title = document.querySelector('.lightbox-media__title')
-            title.innerHTML = medias[currentIndex].alt.substr(42); 
+            title.innerHTML = medias[currentIndex].alt.substr(14); 
         } 
         
         else if (isVideo) {           
@@ -218,12 +218,12 @@ function initLightboxButtons(currentIndex, medias) {
             let img = document.createElement( 'img' );
             let imgUrl = medias[currentIndex].src;
             img.setAttribute("src", imgUrl);
-            img.alt = medias[currentIndex].alt.substr(42);
+            img.alt = medias[currentIndex].alt.substr(14);
             img.classList.add('photographer_gallery--element__img', 'photographer_gallery--element__media');
             lightboxMedia.appendChild(img);
 
             let title = document.querySelector('.lightbox-media__title')
-            title.innerHTML = medias[currentIndex].alt.substr(42); 
+            title.innerHTML = medias[currentIndex].alt.substr(14); 
         } 
         
         else if (isVideo) {           
